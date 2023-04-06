@@ -1,0 +1,67 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+}
+
+ul {
+    border: 1px solid black;
+}
+
+.list-group-item {
+    border-bottom: 1px dashed black;
+    
+    /*border-style: ;*/
+}
+
+.list-group-item:last-child{
+    border-bottom-width: 0;
+}
+
+.ceo {
+    background-color: lightskyblue;
+}
+
+.deputy_ceo {
+    background-color: lightcoral;
+}
+
+.regional_manager {
+    background-color: lightgreen;
+}
+
+.territorial_manager {
+    background-color: lightgoldenrodyellow;
+}
+
+.deputy_territorial_manager {
+    background-color: lightseagreen;
+}
+
+.head_of_network {
+    background-color: lightsalmon;
+}
+
+.pharmacist {
+    background-color: lightpink;
+}
+
+a {
+    color: black;
+    cursor: pointer;
+}
+
+table {
+    margin-top: 16px;
+}
+
+.container {
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.navbar {
+    border: 1px solid lightgray;
+}

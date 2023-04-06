@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Employee Info: {{ employee.pib }}</h1>
+<div class="container">
+    <table class="table table-sm">
+
+        <tbody>
+            <tr>
+                <th scope="row">
+                    Full Name:
+                </th>
+                <td>
+                    {{ employee.pib }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Post:
+                </th>
+                <td>
+                    {{ employee.get_post }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Employ Date:
+                </th>
+                <td>
+                    {{ employee.employ_date }}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Email:
+                </th>
+                <td>
+                    <a href="mailto:{{ employee.email }}">{{ employee.email }}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

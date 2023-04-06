@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load mptt_tags %}
+{% full_tree_for_model employee_base_app.Employee as employers %}
+
+{% for employee,structure in employers|tree_info %}
+{% if structure.new_level %}<ul class="list-group">
+    <li class="list-group-item {{ employee.post }}"><a href="{{ employee.id }}">{% else %}</a></li>
+    <li class="list-group-item {{ employee.post }}"> <a href="{{ employee.id }}">{% endif %}
+            {{ employee.pib }} ({{ employee.get_post }})
+            {% for level in structure.closed_levels %}</a></li>
+</ul>{% endfor %}
+{% endfor %}
+
+{% endblock %}
