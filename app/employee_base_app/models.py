@@ -43,15 +43,19 @@ mptt.register(Employee)
 
 
 '''
+from employee_base_app.models import Employee
+from faker import Faker
+from django.utils import timezone
+import datetime
+import random
 
-posts = ['ceo', 'deputy_ceo', 'regional_manager', 'territorial_manager', 'deputy_territorial_manager', 'head_of_network', 'pharmacist']
-for _ in range(50000):
-    employee = Employee(pib=fake.name(), post = random.choice(posts), employ_date = timezone.now() - datetime.timedelta(weeks=random.randint(5, 150)), email = fake.email(), parent = random.choice(Employee.objects.all()))
+fake = Faker()
+
+employers = Employee.objects.all()[:8]
+
+for employee in employers:
+    employee.pib = fake.name()
+    employee.employ_date = timezone.now() - datetime.timedelta(weeks=random.randint(5, 150))
+    employee.email = fake.email()
     employee.save()
-
-
-# установить максимальный уровень вложенности до 7 (возможно)
-# проверку на должность (правильный порядок)
-
-
 '''

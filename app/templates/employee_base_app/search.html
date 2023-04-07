@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<ul class="list-group">
+    {% for employee in object_list %}
+    <li class="list-group-item {{ employee.post }}"><a href="{% url 'detail' employee.id %}">{{ employee.pib }}
+            ({{ employee.get_post }})</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
