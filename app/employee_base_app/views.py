@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Employee
-from django.urls import reverse
-from django.http import HttpResponseRedirect
 from django.views.generic import ListView
 from django.db.models import Q
 
