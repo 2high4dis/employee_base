@@ -40,22 +40,3 @@ class Employee(models.Model):
 
 
 mptt.register(Employee)
-
-
-'''
-from employee_base_app.models import Employee
-from faker import Faker
-from django.utils import timezone
-import datetime
-import random
-
-fake = Faker()
-
-employers = Employee.objects.all()[:8]
-
-for employee in employers:
-    employee.pib = fake.name()
-    employee.employ_date = timezone.now() - datetime.timedelta(weeks=random.randint(5, 150))
-    employee.email = fake.email()
-    employee.save()
-'''

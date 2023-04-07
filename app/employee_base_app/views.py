@@ -15,8 +15,6 @@ def detail(request, employee_id):
     }
     return render(request=request, template_name='employee_base_app/detail.html', context=context)
 
-# add search by date
-
 
 class Search(ListView):
     model = Employee
