@@ -1,6 +1,8 @@
 from django.db import models
 import mptt
+import datetime
 from django.utils import timezone
+from django.urls import reverse
 
 choices = (
     ('ceo', 'CEO'),
@@ -30,13 +32,20 @@ class Employee(models.Model):
     employ_date = models.DateField(default=timezone.now)
     email = models.EmailField(max_length=100)
     parent = models.ForeignKey(
-        'self', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Boss')
+        'self', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Boss')
 
     def __str__(self):
         return f'{self.pib} ({self.post})'
 
     def get_post(self):
         return posts[f'{self.post}']
+
+    def was_employeed_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(weeks=10) <= self.employ_date <= now
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk': self.pk})
 
 
 mptt.register(Employee)

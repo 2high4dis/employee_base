@@ -2,13 +2,15 @@
 
 {% block content %}
 {% load mptt_tags %}
-{% full_tree_for_model employee_base_app.Employee as employers %}
 
-{% for employee,structure in employers|tree_info %}
-{% if structure.new_level %}<ul class="list-group">
+{% full_tree_for_model employee_base_app.Employee as employees %}
+
+{% for employee,structure in employees|tree_info %}
+{% if structure.new_level %}<ul class="list-group" id="{{ employee.parent_id }}" {% if forloop.counter > 2 %}
+    hidden="until-found" {% endif %}>
     <li class="list-group-item {{ employee.post }}"><a href="{% url 'detail' employee.id %}">{% else %}</a></li>
-    <li class="list-group-item {{ employee.post }}"> <a href="{% url 'detail' employee.id %}">{% endif %}
-            {{ employee.pib }} ({{ employee.get_post }})
+    <li class="list-group-item {{ employee.post }}"><a href="{% url 'detail' employee.id %}">{% endif %}
+            {{ employee.pib }} ({{ employee.get_post }})</a> <a href="#{{ employee.id }}">Show
             {% for level in structure.closed_levels %}</a></li>
 </ul>{% endfor %}
 {% endfor %}
